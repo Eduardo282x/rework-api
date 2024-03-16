@@ -17,12 +17,16 @@ model User {
   idUser Int @id @default(autoincrement())
   name String
   lastname String
-  username String
+  username String?
   password String
-  description String
-  picture String
-  date DateTime
-  Age Int
+  description String?
+  // picture String
+  skills String?
+  date DateTime?
+  age Int?
+  country String?
+  email String
+  phone String?
   rolId Int
   rol Rol @relation(fields: [rolId], references: [idRol])
 }
@@ -30,6 +34,11 @@ model Rol {
   idRol Int @id @default(autoincrement())
   description String
   user User[]
+}
+
+model Skills {
+  idSkills Int @id @default(autoincrement())
+  description String
 }
 
 // model Company {
