@@ -1,8 +1,8 @@
 import { Router } from "express";
-// import servicesRouter from "./services.routes";
+import rolRouter from "./rol.route";
 
 const apiRouter: Router = Router();
 
-// apiRouter.use('/services', servicesRouter)
+apiRouter.use('/rol', rolRouter);
 
 export default apiRouter;
