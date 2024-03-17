@@ -1,11 +1,10 @@
 export interface Login {
-    email: string;
+    username: string;
     password: string;
 }
 
 export interface Register {
-    name: string;
-    lastname: string;
+    username: string;
     email: string;
     isEmploye: boolean;
     password: string;

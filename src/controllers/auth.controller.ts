@@ -10,7 +10,7 @@ const login = async (req: Request, res: Response) => {
     const user = await prismaClient.user.findFirst(
         {
             where: {
-                email: bodyLogin.email,
+                username: bodyLogin.username,
                 password: bodyLogin.password
             },
             include: {
@@ -33,9 +33,8 @@ const register = async (req: Request, res: Response) => {
 
     const register = await prismaClient.user.create({
         data: {
+            username: bodyRegister.username,
             email: bodyRegister.email,
-            name: bodyRegister.name,
-            lastname: bodyRegister.lastname,
             password: bodyRegister.password,
             rolId: bodyRegister.isEmploye ? 1 : 2,
         }
