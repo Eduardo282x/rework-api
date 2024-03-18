@@ -8,4 +8,8 @@ export interface Register {
     email: string;
     isEmploye: boolean;
     password: string;
+
+    country?: string;
+    area?: string;
+    phone?: string;
 }

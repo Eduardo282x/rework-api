@@ -15,33 +15,19 @@ datasource db {
 
 model User {
   idUser Int @id @default(autoincrement())
-  name String?
-  lastname String?
+
   username String
   password String
+  email String
+  isEmploye String
+
+  fullName String?
+  country String?
+  ocupation String?
   description String?
   skills String?
-  date DateTime?
-  age String?
-  country String?
-  email String
+  experience String?
+
+  area String?
   phone String?
-  rolId Int
-  rol Rol @relation(fields: [rolId], references: [idRol])
 }
-model Rol {
-  idRol Int @id @default(autoincrement())
-  description String
-  user User[]
-}
-
-model Skills {
-  idSkills Int @id @default(autoincrement())
-  description String
-}
-
-// model Company {
-//   idCompany Int @id @default(autoincrement())
-//   name String
-//   description String
-// }

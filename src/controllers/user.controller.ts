@@ -6,23 +6,17 @@ import { Usuario } from "../models/user.model";
 const updateProfile = async (req: Request, res: Response) => {
     const userBody: Usuario = req.body
 
-    const updateRol = await prismaClient.user.update({
+    const updateProfile = await prismaClient.user.update({
         where: {idUser: userBody.idUser},
         data: {
-            name: userBody.name,
-            lastname: userBody.lastname,
-            username: userBody.username,
+            fullName: userBody.fullName,
+            country: userBody.country,
+            ocupation: userBody.ocupation,
             description: userBody.description,
             skills: userBody.skills,
-            date: userBody.date,
-            age: userBody.age,
-            country: userBody.country,
-            email: userBody.email,
-            phone: userBody.phone,
+            experience: userBody.experience
         }
     });
-
-    console.log(updateRol);
 
     const response: BaseResponse = {
         message: 'Perfil actualizado exitosamente.',
@@ -32,6 +26,23 @@ const updateProfile = async (req: Request, res: Response) => {
     res.send(response);
 }
 
+const getProfile = async (req: Request, res: Response) => {
+    const userBody: Usuario = req.body
+
+    const getUser = await prismaClient.user.findFirst({
+        where: {idUser: userBody.idUser},
+    });
+
+    const response: BaseResponse = {
+        message: 'Perfil actualizado exitosamente.',
+        success: true,
+        statusCode: 200,
+        data: getUser
+    };
+    res.send(response);
+}
+
 export const UserController = {
-    updateProfile
+    updateProfile,
+    getProfile
 }
